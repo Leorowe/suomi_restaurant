@@ -7,6 +7,8 @@ var app = require('koa')()
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var chinesemenu = require('./routes/chinesemenu');
+var suomimenu = require('./routes/suomimenu');
 
 // global middlewares
 app.use(views('views', {
@@ -28,9 +30,12 @@ app.use(require('koa-static')(__dirname + '/public'));
 
 // routes definition
 koa.use('/', index.routes(), index.allowedMethods());
+// koa.use('/index*', index.routes(), index.allowedMethods());
+koa.use('/chinesemenu*', chinesemenu.routes(), chinesemenu.allowedMethods());
+koa.use('/suomimenu*', suomimenu.routes(), suomimenu.allowedMethods());
 koa.use('/users', users.routes(), users.allowedMethods());
 
-// mount root routes  
+// mount root routes
 app.use(koa.routes());
 
 app.on('error', function(err, ctx){
