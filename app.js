@@ -9,7 +9,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var chinesemenu = require('./routes/chinesemenu');
 var suomimenu = require('./routes/suomimenu');
-
+var drink = require('./routes/drink')
 // global middlewares
 app.use(views('views', {
   root: __dirname + '/views',
@@ -34,7 +34,7 @@ koa.use('/', index.routes(), index.allowedMethods());
 koa.use('/chinesemenu*', chinesemenu.routes(), chinesemenu.allowedMethods());
 koa.use('/suomimenu*', suomimenu.routes(), suomimenu.allowedMethods());
 koa.use('/users', users.routes(), users.allowedMethods());
-
+koa.use('/drink*',drink.routes(),users.allowedMethods());
 // mount root routes
 app.use(koa.routes());
 
