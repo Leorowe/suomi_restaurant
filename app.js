@@ -6,7 +6,7 @@ var app = require('koa')()
   , onerror = require('koa-onerror');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var contact = require('./routes/contact');
 var chinesemenu = require('./routes/chinesemenu');
 var suomimenu = require('./routes/suomimenu');
 var drink = require('./routes/drink')
@@ -32,9 +32,9 @@ app.use(require('koa-static')(__dirname + '/public'));
 koa.use('/', index.routes(), index.allowedMethods());
 // koa.use('/index*', index.routes(), index.allowedMethods());
 koa.use('/chinesemenu*', chinesemenu.routes(), chinesemenu.allowedMethods());
-koa.use('/suomimenu*', suomimenu.routes(), suomimenu.allowedMethods());
-koa.use('/users', users.routes(), users.allowedMethods());
-koa.use('/drink*',drink.routes(),users.allowedMethods());
+koa.use('/suomimenu', suomimenu.routes(), suomimenu.allowedMethods());
+koa.use('/contact', contact.routes(), contact.allowedMethods());
+koa.use('/drink',drink.routes(),drink.allowedMethods());
 // mount root routes
 app.use(koa.routes());
 

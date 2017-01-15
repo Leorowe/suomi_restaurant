@@ -1,7 +1,9 @@
 var router = require('koa-router')();
 
 router.get('/', function *(next) {
-  this.body = 'this a users response!';
+  yield this.render('contact', {
+    title: 'Hello World Koa!'
+  });
 });
 
 module.exports = router;
